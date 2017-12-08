@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "107271182792",
+    "firebase_url": "https://math-63ba0.firebaseio.com",
+    "project_id": "math-63ba0",
+    "storage_bucket": "math-63ba0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:107271182792:android:660894acd430f2f2",
+        "android_client_info": {
+          "package_name": "vn.phuongcong.math12c3"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "107271182792-oa663cdhr1t6rjbd32tld7d7hv6fs4hm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "vn.phuongcong.math12c3",
+            "certificate_hash": "a109fdffef81119e78e2def8c14f6df550d3f272"
+          }
+        },
+        {
+          "client_id": "107271182792-njietehfkbr9qve3h700sbb88e4v3jg5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAh3GaPWzGX9L7gvgqT1ZiNcOzq6s3-WI0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "107271182792-njietehfkbr9qve3h700sbb88e4v3jg5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
