@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="50dp"
+    android:layout_height="50dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <de.hdodenhof.circleimageview.CircleImageView
+        app:civ_border_width="1dp"
+        android:id="@+id/cimv_last"
+        android:layout_marginBottom="7dp"
+        android:layout_marginTop="7dp"
+        android:visibility="visible"
+        android:layout_marginRight="7dp"
+        android:layout_centerHorizontal="true"
+        app:civ_border_color="#447cfc"
+        android:src="#fff"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    <de.hdodenhof.circleimageview.CircleImageView
+        app:civ_border_width="2dp"
+        android:background="@drawable/elip"
+        android:id="@+id/civ_chapter"
+        android:visibility="visible"
+        android:layout_centerInParent="true"
+        app:civ_border_color="#f7b684"
+        android:src="#ff6a5f"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <TextView
+        android:id="@+id/tv_chapter"
+        android:text="1"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true" />
+</RelativeLayout>
