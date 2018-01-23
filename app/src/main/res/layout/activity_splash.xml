@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    >
+
+    <RelativeLayout
+        android:layout_above="@+id/text"
+        android:layout_width="match_parent"
+        android:layout_height="150dp">
+        <!--<com.github.ybq.android.spinkit.SpinKitView-->
+            <!--android:id="@+id/progress"-->
+            <!--style="@style/SpinKitView.Large.Pulse"-->
+            <!--android:layout_width="30dp"-->
+            <!--android:layout_height="30dp"-->
+            <!--android:layout_centerInParent="true"-->
+            <!--app:SpinKit_Color="@color/colorAccent" />-->
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:src="@drawable/imagespalsh" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/text"
+        android:fontFamily="sans-serif-condensed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Giải toán THPT"
+        android:textColor="@color/colorPrimary"
+        android:textSize="20sp" />
+</LinearLayout>

@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "E:\\Win\\github-android\\GiaiToanTHPT\\mupdflib\\build\\intermediates\\res\\merged\\androidTest\\debug\\values_values.arsc.flat",
+            "map": [
+                {
+                    "source": "E:\\Win\\github-android\\GiaiToanTHPT\\mupdflib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,106,150,192,262,345,389,447,533,589,627,670,720",
+                        "endColumns": "50,43,41,69,82,43,57,85,55,37,42,49,57",
+                        "endOffsets": "101,145,187,257,340,384,442,528,584,622,665,715,773"
+                    }
+                }
+            ]
+        }
+    ]
+}

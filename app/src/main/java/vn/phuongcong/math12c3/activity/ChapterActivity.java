@@ -3,6 +3,7 @@ package vn.phuongcong.math12c3.activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,7 +11,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.artifex.mupdf.viewer.DocumentActivity;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.rw.keyboardlistener.KeyboardUtils;
 
 import java.util.ArrayList;
 
@@ -18,26 +26,33 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
-import vn.phuongcong.math12c3.KeyboardUtils;
+import vn.phuongcong.math12c3.KeyboardUtil;
 import vn.phuongcong.math12c3.R;
 import vn.phuongcong.math12c3.adapter.ChapterAdapter;
 import vn.phuongcong.math12c3.adapter.LessonAdapter;
 import vn.phuongcong.math12c3.data.Chapter;
 import vn.phuongcong.math12c3.data.Database;
 import vn.phuongcong.math12c3.data.Lesson;
+import vn.phuongcong.math12c3.data.MuPdfData;
 
 public class ChapterActivity extends AppCompatActivity implements ChapterAdapter.OnItemChapterClick, LessonAdapter.OnEventClick {
-    public static final String DATABASE_NAME = "aaaaaa.sqlite";
+    public static final String DATABASE_NAME = "giatoan.sqlite";
     public static final String SQL = "select * from chapter where class = ";
     public static final String SQLLESSON = "select * from lesson where chapterID = ";
     @BindView(R.id.btn_back_chapter)
     Button btnBackChapter;
+    @BindView(R.id.btn_close_search)
+    ImageButton btnCloseSearch;
     @BindView(R.id.edt_search)
     EditText edtSearch;
     @BindView(R.id.btn_seach)
-    Button btnSeach;
+    ImageButton btnSeach;
     @BindView(R.id.civ_title_chapter)
     CircleImageView civTitleChapter;
+    @BindView(R.id.tv_chapter_title)
+    TextView tvChapterTitle;
+    @BindView(R.id.adViewa)
+    AdView adViewa;
     private SQLiteDatabase database;
     @BindView(R.id.rcv_chapter)
     RecyclerView rcvChapter;
@@ -52,20 +67,46 @@ public class ChapterActivity extends AppCompatActivity implements ChapterAdapter
 
     private Integer flag;
     private ArrayList<Lesson> lessons;
+    private String title;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chapter);
         getSupportActionBar().hide();
+
         ButterKnife.bind(this);
         chapters = new ArrayList<>();
         lessons = new ArrayList<>();
-        hocPhan = getHocPhan();
+        hocPhan = getIntent().getIntExtra("phan", 0);
+        title = getIntent().getStringExtra("title");
+        tvChapterTitle.setText(title);
         readChapter();
         setRcvLesson();
         setRcvChapter();
+        readLesson(hocPhan + 1);
+        KeyboardUtils.addKeyboardToggleListener(this, new KeyboardUtils.SoftKeyboardToggleListener() {
+            @Override
+            public void onToggleSoftKeyboard(boolean isVisible) {
+                if (isVisible) {
+                    tvChapterTitle.setVisibility(View.GONE);
+                    btnCloseSearch.setVisibility(View.VISIBLE);
+                    edtSearch.setBackground(getResources().getDrawable(R.drawable.edtb));
+                } else {
+                    edtSearch.setBackground(getResources().getDrawable(R.drawable.edt));
+                    btnCloseSearch.setVisibility(View.GONE);
+                    tvChapterTitle.setVisibility(View.VISIBLE);
+                    edtSearch.clearFocus();
+                    edtSearch.setText("");
 
+                }
+//                Toast.makeText(ChapterActivity.this, "keyboard visible: "+isVisible,Toast.LENGTH_LONG).show();
+            }
+        });
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adViewa.loadAd(adRequest);
 
     }
 
@@ -97,25 +138,13 @@ public class ChapterActivity extends AppCompatActivity implements ChapterAdapter
                     int id = cursor.getInt(0);
                     String name = cursor.getString(1);
                     String index = cursor.getString(3);
-                    chapters.add(new Chapter(id, name,index));
+                    chapters.add(new Chapter(id, name, index));
                 } while (cursor.moveToNext());
             }
             cursor.close();
         }
     }
 
-    private int getHocPhan() {
-        int i = 0;
-        switch (getIntent().getStringExtra("gt11")) {
-            case "gt11":
-                i = 11;
-                break;
-            case "hh11":
-                i = 111;
-                break;
-        }
-        return i;
-    }
 
     @Override
     public void onClick(int id) {
@@ -154,34 +183,45 @@ public class ChapterActivity extends AppCompatActivity implements ChapterAdapter
 
     @Override
     public void onLessonClick(Lesson l) {
-        Intent intent = new Intent(this, MainActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("lesson", l);
-        intent.putExtras(bundle);
-        startActivity(intent);
+        Uri uri = MuPdfData.getUri(l.getId() + "");
+        if (uri != null) {
+            Intent intent = new Intent(this, DocumentActivity.class);
+//            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
+            intent.setAction(Intent.ACTION_VIEW);
+            intent.setData(uri);
+            intent.putExtra("lessonName", l.getLesonName());
+            startActivity(intent);
+        } else {
+            Toast.makeText(this, "file chưa được cập nhật", Toast.LENGTH_LONG).show();
+        }
 
     }
 
-    @OnClick({R.id.btn_back_chapter, R.id.edt_search, R.id.btn_seach})
+    @OnClick({R.id.btn_back_chapter, R.id.edt_search, R.id.btn_close_search, R.id.btn_seach})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_back_chapter:
                 finish();
-                KeyboardUtils.hideKeyboard(this,edtSearch);
+                KeyboardUtil.hideKeyboard(this, edtSearch);
                 break;
             case R.id.edt_search:
                 break;
+            case R.id.btn_close_search:
+                KeyboardUtil.hideKeyboard(this, edtSearch);
+                break;
             case R.id.btn_seach:
-                edtSearch.clearFocus();
-                edtSearch.setText("");
-                KeyboardUtils.hideKeyboard(this,edtSearch);
+                search();
+                KeyboardUtil.hideKeyboard(this, edtSearch);
                 break;
         }
+    }
+
+    private void search() {
     }
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        KeyboardUtils.hideKeyboard(this,edtSearch);
+        KeyboardUtil.hideKeyboard(this, edtSearch);
     }
 }

@@ -18,9 +18,11 @@
             android:layout_height="30dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="5dp"
+            android:layout_marginRight="20dp"
             android:background="@drawable/ic_arrow_back_black_24dp" />
 
         <de.hdodenhof.circleimageview.CircleImageView
+            android:visibility="gone"
             android:id="@+id/civ_title_chapter"
             android:layout_width="30dp"
             android:layout_height="30dp"
@@ -31,55 +33,87 @@
             android:text="Giải Toán THPT       "
             android:textColor="#fff"
             android:textSize="20sp" />
-        <LinearLayout
-            android:layout_above="@id/edt_search"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@android:color/transparent"
-            android:focusable="true"
-            android:focusableInTouchMode="true">
-        </LinearLayout>
-        <EditText
-            android:layout_marginLeft="10dp"
-            android:maxLines="1"
-            android:layout_toLeftOf="@+id/btn_seach"
-            android:id="@+id/edt_search"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/civ_title_chapter"
-            android:background="@drawable/edt"
-            android:hint="Tìm kiếm"
-            android:paddingBottom="5dp"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
-            android:paddingTop="5dp" />
-        <Button
-            android:id="@+id/btn_seach"
-            android:layout_marginRight="10dp"
-            android:drawableRight="@drawable/ic_search_black_24dp"
-            android:background="@drawable/seach"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_width="30dp"
-            android:layout_height="30dp" />
+      <LinearLayout
+          android:layout_marginRight="10dp"
+          android:layout_toRightOf="@+id/btn_back_chapter"
+          android:orientation="horizontal"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent">
+          <TextView
+              android:text="Hình học 12"
+              android:textColor="#fff"
+              android:layout_gravity="center_vertical"
+              android:layout_marginLeft="5dp"
+              android:id="@+id/tv_chapter_title"
+              android:layout_weight="1"
+              android:textSize="18sp"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content" />
+          <ImageButton
+            android:layout_gravity="center_vertical"
+              android:background="@drawable/edtt"
+              android:src="@drawable/ic_close_white_24dp"
+              android:id="@+id/btn_close_search"
+              android:layout_toLeftOf="@+id/edt_search"
+              android:layout_width="wrap_content"
+              android:layout_height="30dp" />
+          <RelativeLayout
+              android:layout_weight="1.8"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+              <LinearLayout
+                  android:layout_above="@id/edt_search"
+                  android:layout_width="0dp"
+                  android:layout_height="0dp"
+                  android:background="@android:color/transparent"
+                  android:focusable="true"
+                  android:focusableInTouchMode="true">
+              </LinearLayout>
+              <EditText
+                  android:maxLines="1"
+                  android:layout_alignParentRight="true"
+                  android:imeOptions="actionSearch"
+                  android:id="@+id/edt_search"
+                  android:layout_width="match_parent"
+                  android:layout_height="30dp"
+                  android:layout_centerVertical="true"
+                  android:textSize="16sp"
+                  android:background="@drawable/edtb"
+                  android:hint="Tìm kiếm"
+                  android:paddingBottom="5dp"
+                  android:paddingLeft="5dp"
+                  android:paddingRight="5dp"
+                  android:paddingTop="5dp" />
+          </RelativeLayout>
+          <ImageButton
+              android:layout_gravity="center_vertical"
+              android:id="@+id/btn_seach"
+              android:src="@drawable/ic_search_black_24dp"
+              android:background="@drawable/seach"
+              android:layout_width="30dp"
+              android:layout_height="30dp" />
+      </LinearLayout>
 
     </RelativeLayout>
 
     <LinearLayout
+        android:background="@color/colorlesson"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <TextView
+            android:background="@drawable/arrow_shape"
+            android:text=" Chương"
+
+            android:gravity="center_vertical"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
-            android:textSize="22sp" />
+            android:layout_height="30dp"
+            android:layout_margin="10dp"
+            android:textSize="16sp"/>
 
         <android.support.v7.widget.RecyclerView
-            android:background="@color/colorlesson"
+
             android:id="@+id/rcv_chapter"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -103,15 +137,31 @@
             android:text="Đạo hàm và hình học"
             android:textColor="#fff"
             android:textSize="23sp" />
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rcv_lesson"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/colorlesson"
-            android:paddingTop="5dp">
+            android:layout_height="match_parent">
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rcv_lesson"
+                android:layout_above="@+id/adViewa"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorlesson"
+                android:paddingTop="5dp">
 
-        </android.support.v7.widget.RecyclerView>
+            </android.support.v7.widget.RecyclerView>
+            <com.google.android.gms.ads.AdView
+                xmlns:ads="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/adViewa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                ads:adSize="BANNER"
+                ads:adUnitId="@string/idbannerbottom">
+            </com.google.android.gms.ads.AdView>
+        </RelativeLayout>
+
+
     </LinearLayout>
 
 </LinearLayout>
