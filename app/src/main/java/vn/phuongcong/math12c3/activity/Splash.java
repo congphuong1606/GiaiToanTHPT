@@ -40,7 +40,7 @@ public class Splash extends AppCompatActivity {
                 super.run();
                 int waited = 0;
                 MuPdfData.getUriFromFileCopy(Splash.this);
-                while (waited < 3000) {
+                while (waited < 2000) {
                     try {
                         sleep(100);
                     } catch (InterruptedException e) {

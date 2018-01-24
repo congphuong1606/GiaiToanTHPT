@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.artifex.mupdf.viewer.DocumentActivity;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.rw.keyboardlistener.KeyboardUtils;
 
 import java.util.ArrayList;
@@ -51,8 +52,6 @@ public class ChapterActivity extends AppCompatActivity implements ChapterAdapter
     CircleImageView civTitleChapter;
     @BindView(R.id.tv_chapter_title)
     TextView tvChapterTitle;
-    @BindView(R.id.adViewa)
-    AdView adViewa;
     private SQLiteDatabase database;
     @BindView(R.id.rcv_chapter)
     RecyclerView rcvChapter;
@@ -68,6 +67,7 @@ public class ChapterActivity extends AppCompatActivity implements ChapterAdapter
     private Integer flag;
     private ArrayList<Lesson> lessons;
     private String title;
+    private AdView adViewa;
 
 
     @Override
@@ -104,7 +104,8 @@ public class ChapterActivity extends AppCompatActivity implements ChapterAdapter
 //                Toast.makeText(ChapterActivity.this, "keyboard visible: "+isVisible,Toast.LENGTH_LONG).show();
             }
         });
-
+        adViewa = findViewById(R.id.adViewa);
+        MobileAds.initialize(this, getResources().getString(R.string.appId));
         AdRequest adRequest = new AdRequest.Builder().build();
         adViewa.loadAd(adRequest);
 

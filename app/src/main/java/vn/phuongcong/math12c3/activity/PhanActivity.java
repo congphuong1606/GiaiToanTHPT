@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -27,14 +29,17 @@ public class PhanActivity extends AppCompatActivity {
     CircleImageView civH11;
     @BindView(R.id.civ_h12)
     CircleImageView civH12;
-    @BindView(R.id.av_detail)
-    AdView avDetail;
+    private AdView adViewa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_phan);
         ButterKnife.bind(this);
+        adViewa = findViewById(R.id.av_ff);
+        MobileAds.initialize(this, getResources().getString(R.string.appId));
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adViewa.loadAd(adRequest);
     }
 
     @OnClick(R.id.civ_g11)
