@@ -1,10 +1,13 @@
 package vn.phuongcong.math12c3.activity;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Toolbar;
 
+import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
@@ -40,6 +43,7 @@ public class PhanActivity extends AppCompatActivity {
         MobileAds.initialize(this, getResources().getString(R.string.appId));
         AdRequest adRequest = new AdRequest.Builder().build();
         adViewa.loadAd(adRequest);
+
     }
 
     @OnClick(R.id.civ_g11)

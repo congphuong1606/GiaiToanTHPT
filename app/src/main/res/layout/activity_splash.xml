@@ -39,6 +39,18 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:text="Giải toán THPT"
-        android:textColor="@color/colorPrimary"
+        android:textColor="#1e3a66"
         android:textSize="20sp" />
+
+    <TextView
+        android:textStyle="italic"
+        android:textColor="#5884a3"
+        android:layout_gravity=""
+        android:textSize="12sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:width="0.1dp"
+        android:fontFamily="cursive"
+        android:gravity="center"
+        android:text="--- Designed by Phuong ---" />
 </LinearLayout>

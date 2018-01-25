@@ -25,7 +25,7 @@ public class MuPdfData {
     }
 
     public static void getUriFromFileCopy(Activity activity) {
-        for (int i = 1; i <= 98; i++) {
+        for (int i = 1; i <= 136; i++) {
             try {
 
                 String outFileName = activity.getApplicationInfo().dataDir + "/databases/" + i + ".pdf";

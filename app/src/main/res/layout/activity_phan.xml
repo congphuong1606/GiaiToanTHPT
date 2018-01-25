@@ -6,14 +6,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bgr"
-
     tools:context="vn.phuongcong.math12c3.activity.PhanActivity">
 
-    <LinearLayout
-        android:layout_marginBottom="20dp"
-        android:layout_above="@+id/av_ff"
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/gggg"
+        android:layout_marginBottom="-15dp"
+        android:width="0.1dp"
+        android:fontFamily="cursive"
+        android:gravity="center"
+        android:text="-Designed by Phuong-"
+        android:textColor="#679abe"
+        android:textSize="10sp"
+        android:textStyle="italic" />
+
+    <LinearLayout
+        android:id="@+id/gggg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/av_ff"
+        android:layout_marginBottom="20dp"
         android:orientation="horizontal"
         android:paddingBottom="5dp"
         android:paddingTop="10dp">
@@ -84,7 +97,7 @@
                     android:layout_weight="1"
                     android:src="@drawable/gt12"
                     ads:civ_border_color="#ffab03"
-                    app:civ_border_width="0.1dp"/>
+                    app:civ_border_width="0.1dp" />
             </LinearLayout>
 
 
@@ -161,12 +174,12 @@
     </LinearLayout>
 
     <com.google.android.gms.ads.AdView
-        android:background="@null"
         android:id="@+id/av_ff"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
+        android:background="@null"
         ads:adSize="SMART_BANNER"
         ads:adUnitId="@string/idbannerbottom">
 

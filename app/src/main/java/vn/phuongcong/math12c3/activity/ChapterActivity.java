@@ -15,7 +15,6 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.artifex.mupdf.viewer.DocumentActivity;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
@@ -108,6 +107,19 @@ public class ChapterActivity extends AppCompatActivity implements ChapterAdapter
         MobileAds.initialize(this, getResources().getString(R.string.appId));
         AdRequest adRequest = new AdRequest.Builder().build();
         adViewa.loadAd(adRequest);
+//        adViewa.setAdListener(new AdListener() {
+//            @Override
+//            public void onAdLoaded() {
+//                super.onAdLoaded();
+//                adViewa.setVisibility(View.VISIBLE);// Set tag true if adView is loaded
+//            }
+//
+//            @Override
+//            public void onAdFailedToLoad(int i) {
+//                super.onAdFailedToLoad(i);
+//                adViewa.setVisibility(View.GONE); // Set tag false if loading failed
+//            }
+//        });
 
     }
 
@@ -186,7 +198,7 @@ public class ChapterActivity extends AppCompatActivity implements ChapterAdapter
     public void onLessonClick(Lesson l) {
         Uri uri = MuPdfData.getUri(l.getId() + "");
         if (uri != null) {
-            Intent intent = new Intent(this, DocumentActivity.class);
+            Intent intent = new Intent(this, Document2Activity.class);
 //            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
             intent.setAction(Intent.ACTION_VIEW);
             intent.setData(uri);

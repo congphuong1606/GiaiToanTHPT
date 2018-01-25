@@ -1,6 +1,7 @@
 package vn.phuongcong.math12c3.activity;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.animation.Animation;
@@ -40,7 +41,7 @@ public class Splash extends AppCompatActivity {
                 super.run();
                 int waited = 0;
                 MuPdfData.getUriFromFileCopy(Splash.this);
-                while (waited < 2000) {
+                while (waited < 3500) {
                     try {
                         sleep(100);
                     } catch (InterruptedException e) {
@@ -48,13 +49,37 @@ public class Splash extends AppCompatActivity {
                     }
                     waited += 100;
                 }
-                Splash.this.finish();
+
                 Intent intent = new Intent(Splash.this, PhanActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(intent);
             }
+
         };
         mThread.start();
+//        asyncTask.execute();
     }
 
+    private AsyncTask<Void, Void, Void> asyncTask = new AsyncTask<Void, Void, Void>() {
+        @Override
+        protected Void doInBackground(Void... voids) {
+            System.out.println("THREAD" + Thread.currentThread().getName());
+
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            System.out.println("THREAD" + Thread.currentThread().getName());
+
+        }
+
+        ;
+    };
 }
