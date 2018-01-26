@@ -8,10 +8,14 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,6 +25,7 @@ import com.google.android.gms.ads.MobileAds;
 import com.rw.keyboardlistener.KeyboardUtils;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -51,6 +56,16 @@ public class ChapterActivity extends AppCompatActivity implements ChapterAdapter
     CircleImageView civTitleChapter;
     @BindView(R.id.tv_chapter_title)
     TextView tvChapterTitle;
+    @BindView(R.id.btn_left_chapter)
+    ImageView btnLeftChapter;
+    @BindView(R.id.btn_right_chapter)
+    ImageView btnRightChapter;
+    @BindView(R.id.adViewa)
+    AdView adViewa;
+    @BindView(R.id.rcv_lesson_result)
+    RecyclerView rcvLessonResult;
+    @BindView(R.id.layoutResult)
+    LinearLayout layoutResult;
     private SQLiteDatabase database;
     @BindView(R.id.rcv_chapter)
     RecyclerView rcvChapter;
@@ -65,8 +80,10 @@ public class ChapterActivity extends AppCompatActivity implements ChapterAdapter
 
     private Integer flag;
     private ArrayList<Lesson> lessons;
+    private ArrayList<Lesson> lessonResults;
     private String title;
-    private AdView adViewa;
+    private LessonAdapter lessonAdapter2;
+    private ArrayList<Lesson> allLessons = new ArrayList<>();
 
 
     @Override
@@ -78,6 +95,7 @@ public class ChapterActivity extends AppCompatActivity implements ChapterAdapter
         ButterKnife.bind(this);
         chapters = new ArrayList<>();
         lessons = new ArrayList<>();
+        lessonResults = new ArrayList<>();
         hocPhan = getIntent().getIntExtra("phan", 0);
         title = getIntent().getStringExtra("title");
         tvChapterTitle.setText(title);
@@ -120,15 +138,58 @@ public class ChapterActivity extends AppCompatActivity implements ChapterAdapter
 //                adViewa.setVisibility(View.GONE); // Set tag false if loading failed
 //            }
 //        });
+        reaAllLesson();
+        resetFlag();
+        edtSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence text1, int start, int before, int count) {
+                String text = text1.toString().trim();
+                text = text.toLowerCase(Locale.getDefault());
+                lessonResults.clear();
+                if (text.length() == 0) {
+                    layoutResult.setVisibility(View.GONE);
+                } else {
+                    for (Lesson l : allLessons) {
+                        if (l.getLesonName().toLowerCase(Locale.getDefault()).contains(text)) {
+                            lessonResults.add(l);
+                        }
+                    }
+                }
+                if (lessonResults.isEmpty()) {
+                    layoutResult.setVisibility(View.GONE);
+                } else {
+                    layoutResult.setVisibility(View.VISIBLE);
+                }
+                lessonAdapter2.notifyDataSetChanged();
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+
+        });
+
 
     }
 
     private void setRcvLesson() {
         rcvLesson.setLayoutManager(new LinearLayoutManager(this,
                 LinearLayoutManager.VERTICAL, false));
+        rcvLessonResult.setLayoutManager(new LinearLayoutManager(this,
+                LinearLayoutManager.VERTICAL, false));
         lessonAdapter = new LessonAdapter(lessons);
+        lessonAdapter2 = new LessonAdapter(lessonResults);
         lessonAdapter.setEvents(this);
+        lessonAdapter2.setEvents(this);
         rcvLesson.setAdapter(lessonAdapter);
+        rcvLessonResult.setAdapter(lessonAdapter2);
     }
 
     private void setRcvChapter() {
@@ -162,8 +223,23 @@ public class ChapterActivity extends AppCompatActivity implements ChapterAdapter
     @Override
     public void onClick(int id) {
         flag = id;
+        resetFlag();
+
         chapterAdapter.setChapterChossed(flag);
         chapterAdapter.notifyDataSetChanged();
+    }
+
+    private void resetFlag() {
+        if (flag.equals(chapters.get(0).getChapterID())) {
+            btnLeftChapter.setVisibility(View.GONE);
+        } else {
+            btnLeftChapter.setVisibility(View.VISIBLE);
+        }
+        if (flag.equals(chapters.get(chapters.size() - 1).getChapterID())) {
+            btnRightChapter.setVisibility(View.GONE);
+        } else {
+            btnRightChapter.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
@@ -171,6 +247,26 @@ public class ChapterActivity extends AppCompatActivity implements ChapterAdapter
         lessons.clear();
         tvChapterName.setText(c.getChapterName());
         readLesson(c.getChapterID());
+    }
+
+    private void reaAllLesson() {
+
+        database = Database.initDatabase(this, DATABASE_NAME);
+        Cursor cursor = database.rawQuery("select * from lesson", null);
+        if (cursor != null && cursor.getCount() > 0) {
+            if (cursor.moveToFirst()) {
+                do {
+                    int id = cursor.getInt(0);
+                    String name = cursor.getString(1);
+                    byte[] giai = cursor.getBlob(3);
+                    byte[] noidung = cursor.getBlob(4);
+                    allLessons.add(new Lesson(id, name, giai, noidung));
+                } while (cursor.moveToNext());
+            }
+            cursor.close();
+        }
+
+
     }
 
     private void readLesson(Integer chapterID) {
@@ -210,7 +306,7 @@ public class ChapterActivity extends AppCompatActivity implements ChapterAdapter
 
     }
 
-    @OnClick({R.id.btn_back_chapter, R.id.edt_search, R.id.btn_close_search, R.id.btn_seach})
+    @OnClick({R.id.btn_back_chapter, R.id.edt_search, R.id.btn_left_chapter, R.id.btn_right_chapter, R.id.btn_close_search, R.id.btn_seach})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_back_chapter:
@@ -226,6 +322,12 @@ public class ChapterActivity extends AppCompatActivity implements ChapterAdapter
                 search();
                 KeyboardUtil.hideKeyboard(this, edtSearch);
                 break;
+            case R.id.btn_left_chapter:
+                onClick(flag - 1);
+                break;
+            case R.id.btn_right_chapter:
+                onClick(flag + 1);
+                break;
         }
     }
 
@@ -237,4 +339,6 @@ public class ChapterActivity extends AppCompatActivity implements ChapterAdapter
         super.onBackPressed();
         KeyboardUtil.hideKeyboard(this, edtSearch);
     }
+
+
 }

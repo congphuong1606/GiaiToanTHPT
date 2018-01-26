@@ -22,6 +22,7 @@ public class Splash extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+        getSupportActionBar().hide();
         mImageView = (ImageView) findViewById(R.id.image);
         mTextView = (TextView) findViewById(R.id.text);
         startAnimation();
@@ -51,7 +52,7 @@ public class Splash extends AppCompatActivity {
                 }
 
                 Intent intent = new Intent(Splash.this, PhanActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+//                intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(intent);
             }
 
@@ -60,26 +61,5 @@ public class Splash extends AppCompatActivity {
 //        asyncTask.execute();
     }
 
-    private AsyncTask<Void, Void, Void> asyncTask = new AsyncTask<Void, Void, Void>() {
-        @Override
-        protected Void doInBackground(Void... voids) {
-            System.out.println("THREAD" + Thread.currentThread().getName());
 
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
-            System.out.println("THREAD" + Thread.currentThread().getName());
-
-        }
-
-        ;
-    };
 }
