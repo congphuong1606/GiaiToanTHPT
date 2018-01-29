@@ -14,36 +14,43 @@ public final class R {
   }
   public static final class drawable {
     public static final int aaaa=0x7f020000;
-    public static final int button=0x7f020001;
-    public static final int edtt=0x7f020002;
-    public static final int ic_arrow_back=0x7f020003;
-    public static final int ic_chevron_left_white_24dp=0x7f020004;
-    public static final int ic_chevron_right_white_24dp=0x7f020005;
-    public static final int ic_close_white_24dp=0x7f020006;
-    public static final int ic_link_white_24dp=0x7f020007;
-    public static final int ic_search_white_24dp=0x7f020008;
-    public static final int ic_toc_white_24dp=0x7f020009;
-    public static final int page_indicator=0x7f02000a;
-    public static final int seek_line=0x7f02000b;
-    public static final int seek_thumb=0x7f02000c;
+    public static final int animate=0x7f020001;
+    public static final int backone=0x7f020002;
+    public static final int backthree=0x7f020003;
+    public static final int backtwo=0x7f020004;
+    public static final int button=0x7f020005;
+    public static final int edtt=0x7f020006;
+    public static final int ic_arrow_back=0x7f020007;
+    public static final int ic_chevron_left_white_24dp=0x7f020008;
+    public static final int ic_chevron_right_white_24dp=0x7f020009;
+    public static final int ic_close_white_24dp=0x7f02000a;
+    public static final int ic_link_white_24dp=0x7f02000b;
+    public static final int ic_search_white_24dp=0x7f02000c;
+    public static final int ic_toc_white_24dp=0x7f02000d;
+    public static final int page_indicator=0x7f02000e;
+    public static final int seek_line=0x7f02000f;
+    public static final int seek_thumb=0x7f020010;
   }
   public static final class id {
     public static final int btn_document_back=0x7f030000;
     public static final int docNameText=0x7f030001;
-    public static final int linkButton=0x7f030002;
-    public static final int lowerButtons=0x7f030003;
-    public static final int mainBar=0x7f030004;
-    public static final int outlineButton=0x7f030005;
-    public static final int pageNumber=0x7f030006;
-    public static final int pageSlider=0x7f030007;
-    public static final int searchBack=0x7f030008;
-    public static final int searchBar=0x7f030009;
-    public static final int searchButton=0x7f03000a;
-    public static final int searchClose=0x7f03000b;
-    public static final int searchForward=0x7f03000c;
-    public static final int searchText=0x7f03000d;
-    public static final int switcher=0x7f03000e;
-    public static final int tv_name_lesson=0x7f03000f;
+    public static final int imv_arrow_back=0x7f030002;
+    public static final int imv_arrow_tien=0x7f030003;
+    public static final int linkButton=0x7f030004;
+    public static final int lowerButtons=0x7f030005;
+    public static final int mainBar=0x7f030006;
+    public static final int outlineButton=0x7f030007;
+    public static final int pageNumber=0x7f030008;
+    public static final int pageSlider=0x7f030009;
+    public static final int rl=0x7f03000a;
+    public static final int searchBack=0x7f03000b;
+    public static final int searchBar=0x7f03000c;
+    public static final int searchButton=0x7f03000d;
+    public static final int searchClose=0x7f03000e;
+    public static final int searchForward=0x7f03000f;
+    public static final int searchText=0x7f030010;
+    public static final int switcher=0x7f030011;
+    public static final int tv_name_lesson=0x7f030012;
   }
   public static final class layout {
     public static final int document_activity=0x7f040000;

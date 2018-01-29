@@ -9,6 +9,7 @@ dependencies {
 		compile project(':jni')
 	else
 		compile 'com.artifex.mupdf:fitz:1.12.0'
+
 }
 
 android {
