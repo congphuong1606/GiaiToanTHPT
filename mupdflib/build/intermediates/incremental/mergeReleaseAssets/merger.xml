@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="E:\Win\github-android\GiaiToanTHPT\mupdflib\src\main\assets"/><source path="E:\Win\github-android\GiaiToanTHPT\mupdflib\build\generated\assets\shaders\release"/></dataSet><dataSet config="release"><source path="E:\Win\github-android\GiaiToanTHPT\mupdflib\src\release\assets"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="E:\andorid-me\giaitoan\mupdflib\src\main\assets"/><source path="E:\andorid-me\giaitoan\mupdflib\build\generated\assets\shaders\release"/></dataSet><dataSet config="release"><source path="E:\andorid-me\giaitoan\mupdflib\src\release\assets"/></dataSet></merger>

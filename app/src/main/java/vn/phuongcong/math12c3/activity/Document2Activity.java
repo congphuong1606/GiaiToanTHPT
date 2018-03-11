@@ -13,6 +13,7 @@ import android.graphics.drawable.AnimationDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
@@ -47,7 +48,7 @@ import java.util.Locale;
 
 import vn.phuongcong.math12c3.R;
 
-public class Document2Activity extends Activity {
+public class Document2Activity extends AppCompatActivity {
     private TextView tvLesson;
     private ImageButton btnBack;
     private String lessonName = "";
@@ -127,6 +128,9 @@ public class Document2Activity extends Activity {
     public void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.document_activity);
+        if(getSupportActionBar()!=null) {
+            getSupportActionBar().hide();
+        }
 //		requestWindowFeature(Window.FEATURE_NO_TITLE);
 //		getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
@@ -202,6 +206,7 @@ public class Document2Activity extends Activity {
         }
 
         createUI(savedInstanceState);
+        showButtons();
 
     }
 
@@ -527,43 +532,43 @@ public class Document2Activity extends Activity {
         }
     }
 
-    private void hideButtons() {
-        if (mButtonsVisible) {
-            mButtonsVisible = false;
-            hideKeyboard();
-
-            Animation anim = new TranslateAnimation(0, 0, 0, -mTopBarSwitcher.getHeight());
-            anim.setDuration(200);
-            anim.setAnimationListener(new Animation.AnimationListener() {
-                public void onAnimationStart(Animation animation) {
-                }
-
-                public void onAnimationRepeat(Animation animation) {
-                }
-
-                public void onAnimationEnd(Animation animation) {
-                    mTopBarSwitcher.setVisibility(View.INVISIBLE);
-                }
-            });
-            mTopBarSwitcher.startAnimation(anim);
-
-            anim = new TranslateAnimation(0, 0, 0, mPageSlider.getHeight());
-            anim.setDuration(200);
-            anim.setAnimationListener(new Animation.AnimationListener() {
-                public void onAnimationStart(Animation animation) {
-                    mPageNumberView.setVisibility(View.INVISIBLE);
-                }
-
-                public void onAnimationRepeat(Animation animation) {
-                }
-
-                public void onAnimationEnd(Animation animation) {
-                    mPageSlider.setVisibility(View.INVISIBLE);
-                }
-            });
-            mPageSlider.startAnimation(anim);
-        }
-    }
+//    private void hideButtons() {
+//        if (mButtonsVisible) {
+//            mButtonsVisible = false;
+//            hideKeyboard();
+//
+//            Animation anim = new TranslateAnimation(0, 0, 0, -mTopBarSwitcher.getHeight());
+//            anim.setDuration(200);
+//            anim.setAnimationListener(new Animation.AnimationListener() {
+//                public void onAnimationStart(Animation animation) {
+//                }
+//
+//                public void onAnimationRepeat(Animation animation) {
+//                }
+//
+//                public void onAnimationEnd(Animation animation) {
+//                    mTopBarSwitcher.setVisibility(View.INVISIBLE);
+//                }
+//            });
+//            mTopBarSwitcher.startAnimation(anim);
+//
+//            anim = new TranslateAnimation(0, 0, 0, mPageSlider.getHeight());
+//            anim.setDuration(200);
+//            anim.setAnimationListener(new Animation.AnimationListener() {
+//                public void onAnimationStart(Animation animation) {
+//                    mPageNumberView.setVisibility(View.INVISIBLE);
+//                }
+//
+//                public void onAnimationRepeat(Animation animation) {
+//                }
+//
+//                public void onAnimationEnd(Animation animation) {
+//                    mPageSlider.setVisibility(View.INVISIBLE);
+//                }
+//            });
+//            mPageSlider.startAnimation(anim);
+//        }
+//    }
 
     private void searchModeOn() {
         if (mTopBarMode != TopBarMode.Search) {
@@ -673,7 +678,7 @@ public class Document2Activity extends Activity {
     @Override
     public boolean onSearchRequested() {
         if (mButtonsVisible && mTopBarMode == TopBarMode.Search) {
-            hideButtons();
+          //  hideButtons();
         } else {
             showButtons();
             searchModeOn();
@@ -685,7 +690,7 @@ public class Document2Activity extends Activity {
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         if (mButtonsVisible && mTopBarMode != TopBarMode.Search) {
-            hideButtons();
+          //  hideButtons();
         } else {
             showButtons();
             searchModeOff();

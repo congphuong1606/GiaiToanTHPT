@@ -22,7 +22,9 @@ public class Splash extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        getSupportActionBar().hide();
+        if(getSupportActionBar()!=null) {
+            getSupportActionBar().hide();
+        }
         mImageView = (ImageView) findViewById(R.id.image);
         mTextView = (TextView) findViewById(R.id.text);
         startAnimation();

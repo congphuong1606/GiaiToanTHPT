@@ -30,30 +30,6 @@ public final class R {
         public static int seek_line = 0x7f090010;
         public static int seek_thumb = 0x7f090011;
     }
-    public static final class id {
-        public static int btn_document_back = 0x7f0c0001;
-        public static int docNameText = 0x7f0c0002;
-        public static int imv_arrow_back = 0x7f0c0003;
-        public static int imv_arrow_tien = 0x7f0c0004;
-        public static int linkButton = 0x7f0c0005;
-        public static int lowerButtons = 0x7f0c0006;
-        public static int mainBar = 0x7f0c0007;
-        public static int outlineButton = 0x7f0c0008;
-        public static int pageNumber = 0x7f0c0009;
-        public static int pageSlider = 0x7f0c000a;
-        public static int rl = 0x7f0c000b;
-        public static int searchBack = 0x7f0c000c;
-        public static int searchBar = 0x7f0c000d;
-        public static int searchButton = 0x7f0c000e;
-        public static int searchClose = 0x7f0c000f;
-        public static int searchForward = 0x7f0c0010;
-        public static int searchText = 0x7f0c0011;
-        public static int switcher = 0x7f0c0012;
-        public static int tv_name_lesson = 0x7f0c0013;
-    }
-    public static final class layout {
-        public static int document_activity = 0x7f0f0001;
-    }
     public static final class string {
         public static int cancel = 0x7f150001;
         public static int cannot_open_document = 0x7f150002;

@@ -48,7 +48,6 @@ public class PhanActivity extends AppCompatActivity {
     CircleImageView civH12;
     private AdView adViewa;
     private SharedPreferences pref;
-    private SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +59,7 @@ public class PhanActivity extends AppCompatActivity {
         AdRequest adRequest = new AdRequest.Builder().build();
         adViewa.loadAd(adRequest);
         pref = getSharedPreferences("RATE", Context.MODE_PRIVATE);
-        editor = pref.edit();
+
 
 
     }
@@ -101,13 +100,13 @@ public class PhanActivity extends AppCompatActivity {
                 String appPackage = PhanActivity.this.getPackageName();
                 Intent intent = new Intent(Intent.ACTION_VIEW,  Uri.parse("https://play.google.com/store/apps/details?id=" + appPackage));
                 PhanActivity.this.startActivity(intent);
-                editor.putInt("rate",1).apply();
+                pref.edit().putInt("rate",1).apply();
             }
         });
         builder.setNeutralButton("Không", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                editor.clear();
+                pref.edit().clear();
                 dialog.dismiss();
             }
         });

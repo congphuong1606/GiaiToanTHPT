@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="vn.phuongcong.math12c3.activity.ChapterActivity">
+   >
 
 
     <RelativeLayout
@@ -22,18 +22,6 @@
             android:layout_marginRight="15dp"
             android:background="@drawable/ic_arrow_back_black_24dp" />
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/civ_title_chapter"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@id/btn_back_chapter"
-            android:src="@drawable/hh11"
-            android:text="Giải Toán THPT       "
-            android:textColor="#fff"
-            android:textSize="20sp"
-            android:visibility="gone" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -57,7 +45,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:layout_gravity="center_vertical"
-                android:layout_toLeftOf="@+id/edt_search"
                 android:background="@drawable/edtt"
                 android:src="@drawable/ic_close_white_24dp" />
 
@@ -72,13 +59,14 @@
                     android:layout_above="@id/edt_search"
                     android:background="@android:color/transparent"
                     android:focusable="true"
-                    android:focusableInTouchMode="true"></LinearLayout>
+                    android:focusableInTouchMode="true">
+
+                </LinearLayout>
 
                 <EditText
                     android:id="@+id/edt_search"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
-                    android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:background="@drawable/edtb"
                     android:hint="Tìm kiếm"
@@ -195,7 +183,8 @@
 
                     </android.support.v7.widget.RecyclerView>
 
-                    <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+                    <com.google.android.gms.ads.AdView
+                        xmlns:ads="http://schemas.android.com/apk/res-auto"
                         android:id="@+id/adViewa"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -203,7 +192,9 @@
                         android:layout_centerHorizontal="true"
                         android:background="@color/colorlesson"
                         ads:adSize="SMART_BANNER"
-                        ads:adUnitId="@string/idbannerbottom"></com.google.android.gms.ads.AdView>
+                        ads:adUnitId="@string/idbannerbottom">
+
+                    </com.google.android.gms.ads.AdView>
                 </RelativeLayout>
 
 

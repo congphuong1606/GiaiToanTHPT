@@ -30,41 +30,17 @@ public final class R {
         public static final int seek_line = 0x7f02000f;
         public static final int seek_thumb = 0x7f020010;
     }
-    public static final class id {
-        public static final int btn_document_back = 0x7f030000;
-        public static final int docNameText = 0x7f030001;
-        public static final int imv_arrow_back = 0x7f030002;
-        public static final int imv_arrow_tien = 0x7f030003;
-        public static final int linkButton = 0x7f030004;
-        public static final int lowerButtons = 0x7f030005;
-        public static final int mainBar = 0x7f030006;
-        public static final int outlineButton = 0x7f030007;
-        public static final int pageNumber = 0x7f030008;
-        public static final int pageSlider = 0x7f030009;
-        public static final int rl = 0x7f03000a;
-        public static final int searchBack = 0x7f03000b;
-        public static final int searchBar = 0x7f03000c;
-        public static final int searchButton = 0x7f03000d;
-        public static final int searchClose = 0x7f03000e;
-        public static final int searchForward = 0x7f03000f;
-        public static final int searchText = 0x7f030010;
-        public static final int switcher = 0x7f030011;
-        public static final int tv_name_lesson = 0x7f030012;
-    }
-    public static final class layout {
-        public static final int document_activity = 0x7f040000;
-    }
     public static final class string {
-        public static final int cancel = 0x7f050000;
-        public static final int cannot_open_document = 0x7f050001;
-        public static final int cannot_open_document_Reason = 0x7f050002;
-        public static final int dismiss = 0x7f050003;
-        public static final int enter_password = 0x7f050004;
-        public static final int no_further_occurrences_found = 0x7f050005;
-        public static final int not_supported = 0x7f050006;
-        public static final int okay = 0x7f050007;
-        public static final int search = 0x7f050008;
-        public static final int searching_ = 0x7f050009;
-        public static final int text_not_found = 0x7f05000a;
+        public static final int cancel = 0x7f030000;
+        public static final int cannot_open_document = 0x7f030001;
+        public static final int cannot_open_document_Reason = 0x7f030002;
+        public static final int dismiss = 0x7f030003;
+        public static final int enter_password = 0x7f030004;
+        public static final int no_further_occurrences_found = 0x7f030005;
+        public static final int not_supported = 0x7f030006;
+        public static final int okay = 0x7f030007;
+        public static final int search = 0x7f030008;
+        public static final int searching_ = 0x7f030009;
+        public static final int text_not_found = 0x7f03000a;
     }
 }

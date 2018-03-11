@@ -52,8 +52,7 @@ public class ChapterActivity extends AppCompatActivity implements ChapterAdapter
     EditText edtSearch;
     @BindView(R.id.btn_seach)
     ImageButton btnSeach;
-    @BindView(R.id.civ_title_chapter)
-    CircleImageView civTitleChapter;
+
     @BindView(R.id.tv_chapter_title)
     TextView tvChapterTitle;
     @BindView(R.id.btn_left_chapter)
@@ -90,8 +89,9 @@ public class ChapterActivity extends AppCompatActivity implements ChapterAdapter
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chapter);
-        getSupportActionBar().hide();
-
+        if(getSupportActionBar()!=null) {
+            getSupportActionBar().hide();
+        }
         ButterKnife.bind(this);
         chapters = new ArrayList<>();
         lessons = new ArrayList<>();

@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/GiaiToanTHPT.iml" filepath="$PROJECT_DIR$/.idea/GiaiToanTHPT.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/giaitoan.iml" filepath="$PROJECT_DIR$/giaitoan.iml" />
       <module fileurl="file://$PROJECT_DIR$/mupdflib/mupdflib.iml" filepath="$PROJECT_DIR$/mupdflib/mupdflib.iml" />
     </modules>
   </component>
